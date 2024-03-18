@@ -14,4 +14,11 @@ You'll need to store your AWS credentials securely in GitHub Secrets to access y
 - **ECR_REPOSITORY:** The name of your ECR repository.
 
 **3. Create GitHub Actions Workflow:**
-In your GitHub repository, create a directory **`.github/workflows`** if it doesn't exist already. Inside this directory, create a YAML file (e.g., **`ecr_push.yml`**) for your workflow:
+In your GitHub repository, create a directory **`.github/workflows`** if it doesn't exist already. Inside this directory, create a YAML file (e.g., **`ecr_push.yml`**) for your workflow
+
+Make sure to replace placeholders like **${{ secrets.AWS_REGION }}**, **${{ secrets.ECR_REPOSITORY }}**, etc., with your actual values.
+
+**4. Commit and Push:**
+Commit the changes to your GitHub repository. The GitHub Actions workflow will be triggered automatically whenever new code is pushed to the specified branch (in this case, the main branch).
+
+This workflow will build a Docker image from your repository's Dockerfile, tag it with the ECR repository URI, and then push it to your Amazon ECR repository whenever there's a new push to your specified branch.
